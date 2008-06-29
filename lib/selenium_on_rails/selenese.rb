@@ -8,9 +8,10 @@ class SeleniumOnRails::Selenese
     @view = view
   end
 
-  def render template, local_assigns
+  def render template
+    local_assigns = template.locals
     name = (@view.assigns['page_title'] or local_assigns['page_title'])
-    lines = template.strip.split "\n"
+    lines = template.source.strip.split "\n"
     html = ''
     html << extract_comments(lines)
     html << extract_commands(lines, name)
