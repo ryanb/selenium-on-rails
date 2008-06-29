@@ -18,6 +18,10 @@ class SeleniumOnRails::Selenese
     raise 'You cannot have comments in the middle of commands!' if next_line lines, :any
     html
   end
+  
+  def compilable?
+    false
+  end
 
   private
     def next_line lines, expects

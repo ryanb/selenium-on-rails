@@ -31,5 +31,8 @@ class SeleniumOnRails::RSelenese < SeleniumOnRails::TestBuilder
       eval assign_locals_code + "\n" + template
     end
   end
-
+  
+  def compilable?
+    false
+  end
 end
