@@ -17,7 +17,7 @@ module SeleniumOnRails
     # to the app/views/ directory since Rails doesn't support absolute paths
     # to layout templates.
     def layout_path
-      '/layout.rhtml'
+      'layout.rhtml'
     end
     
     def fixtures_path
