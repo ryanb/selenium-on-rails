@@ -1,4 +1,5 @@
 require 'yaml'
+require 'erb'
 
 class SeleniumOnRailsConfig
   @@defaults = {:environments => ['test']}
@@ -16,7 +17,7 @@ class SeleniumOnRailsConfig
         files = [File.expand_path(File.dirname(__FILE__) + '/../config.yml')]
         files << File.join(RAILS_ROOT, 'config', 'selenium.yml')
         files.each do |file|
-          @@configs = YAML.load_file(file) if File.exist?(file)
+          @@configs = YAML.load(ERB.new(IO.read(file)).result) if File.exist?(file)
         end
         @@configs ||= {}
       end
