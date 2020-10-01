@@ -1,0 +1,47 @@
+package com.durgasoft.jdbcapp01.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+/*
+ * Jdbc Appl to create a Table in Database
+ * Type1 Driver
+ * sun.jdbc.odbc.JdbcOdbcDriver
+ * jdbc:odbc:dsnName
+ * JDK1.7 version
+ */
+public class JdbcApp01 {
+
+	public static void main(String[] args) throws Exception {
+		// Load and Register Driver.
+		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		System.out.println("Driver Loaded and Registered.......");
+		
+		// Establish Connection between java appl and Database.
+		Connection con = DriverManager.getConnection("jdbc:odbc:nag", "system", "durga");
+		System.out.println("Connection between Java application and Database established Successfully.......");
+		
+		// Create Statement object.
+		Statement st = con.createStatement();
+		System.out.println("Statement Created Successfully.......");
+		
+		//Write and execute SQL query.
+		st.executeUpdate("create table emp1(ENO number(3) primary key, ENAME varchar2(10), ESAL float(5), EADDR varchar2(10))");
+		System.out.println("create SQL query is executed Successfully......");
+		System.out.println("***********Table emp1 created Successfully********");
+		
+		//Close the Resources.
+		st.close();
+		con.close();
+		System.out.println("Connection Closed.....");
+		
+	}
+}
+
+
+
+
+
+
+
